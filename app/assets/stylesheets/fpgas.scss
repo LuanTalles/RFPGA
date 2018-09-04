@@ -1,0 +1,103 @@
+// Place all the styles related to the fpgas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+i.material-icons.seat_name
+{ line-height: 30px; color: #444444;}
+
+#pin_assigments
+{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}
+
+#family, #model, #name
+{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  height: 30px;
+  background-color: white;
+  text-indent: 4px;
+  border-radius: 5px;
+}
+
+input[type='file'] {
+  color: transparent;
+}
+
+#sevensegs, #switchs, #buttons, #leds
+{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  height: 30px;
+  background-color: white;
+  text-indent: 4px;
+  border-radius: 5px;
+}
+
+.fpga_name_text_field_div
+{
+  margin-right: 2%;
+  width: 18.5%;
+}
+
+#brief
+{
+  width: 100%;
+    border: 1px solid #e0e0e0;
+    height: 140px;
+    background-color: white;
+    line-height: 30px;
+    text-indent: 4px;
+    border-radius: 5px;
+
+}
+
+.fpga_name_text_field_div > div > input[type=number]:not(.browser-default)
+{
+  font-size: 14px;
+}
+
+#open-contacts-dialog-btn
+{
+  border-radius: 5px;
+  // background-color: #2bb6a3;
+  border: 1px solid #2bb6a3;
+  color: #ee6e73;
+  width: 64px;
+}
+
+#div_family, #div_model, #div_name, #div_sevensegs, #div_switchs, #div_buttons1, #div_leds
+{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  height: 30px;
+  background-color: white;
+  text-indent: 4px;
+  border-radius: 5px;
+  line-height: 30px;
+}
+
+.switchs_field_div
+{
+  width: 25%;
+
+}
+
+.seat_name_icon_div > div > div > div
+{
+  text-align: left;
+}
+
+.seat_name_icon_div > div > div > div > a, .seat_name_icon_div > div > div > div > div >a
+{
+  color: #34D1BE;
+}
+
+#pin_assigments_div
+{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}

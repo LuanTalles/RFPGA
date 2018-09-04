@@ -1,0 +1,101 @@
+<% provide(:title, "Edit") %>
+<div class="container edit">
+
+
+  <div class="signup-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+  <h4 style="color: #34D1BE; font-size: 36px">Edit User</h1> <br>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="container1">
+        <%if current_user.avatar.attached?%>
+          <%= image_tag(current_user.avatar, id: "img", alt: "tap")%>
+        <%else%>
+          <a class="material-icons" id="img">person</a>
+        <% end %>
+
+        <%= f.file_field :avatar, id: "image_src", accept: 'image/png,image/gif,image/jpeg'%><br>
+        <a style="font-size: 8px; vertical-align: top; line-height: 1px">Tap on image to edit</a>
+      </div>
+
+      <br>
+
+      <div class="signup_usename_icon_div" style="display: flex;">
+        <div class="signup_usename_icon" style="width:10%">
+          <br> <i class="material-icons signup_username">person</i>
+        </div>
+        <div class="signup_username_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black;">Username</a> <%= f.text_field :name, id: "signup_username_text_field", placeholder: "  Username"%></div>
+        </div>
+      </div>
+
+      <div class="signup_email_icon_div" style="display: flex;">
+        <div class="signup_email_icon" style="width:10%">
+          <br> <i class="material-icons signup_email">mail</i>
+        </div>
+        <div class="signup_email_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black;">Email</a>   <%= f.email_field :email, autocomplete: "email", placeholder: " name@unb.br", id: "signup_email_text_field" %></div>
+        </div>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="signup_password_icon_div" style="display: flex;">
+        <div class="signup_password_icon" style="width:10%">
+          <br> <i class="material-icons signup_password">lock</i>
+        </div>
+        <div class="signup_password_text_field_div" style="width:80%;">
+          <div>
+            <% if @minimum_password_length %>
+            <a style="float: left; color: black; ">Password
+            <i style="color: #bdbdbd">(<%= @minimum_password_length %> characters minimum ) (leave blank if you don't want to change it)</i></a>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "off", id: "signup_password_text_field", placeholder: "Password"%></div>
+        </div>
+      </div>
+
+      <div class="signup_password_c_icon_div" style="display: flex;">
+        <div class="signup_password_c_icon" style="width:10%">
+          <br> <i class="material-icons signup_password_c">lock_outline</i>
+        </div>
+        <div class="signup_password_c_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black; ">Confirm Password</a> <%= f.password_field :password_confirmation, autocomplete: "off", id: "signup_password_c_text_field", placeholder: "Confirm Password"%></div>
+        </div>
+      </div>
+
+
+      <div class="signup_password_curr_icon_div" style="display: flex;">
+        <div class="signup_password_curr_icon" style="width:10%">
+          <br> <i class="material-icons signup_password_curr">vpn_key</i>
+        </div>
+        <div class="signup_password_curr_text_field_div" style="width:80%;">
+          <div>
+            <a style="float: left; color: red; ">Current Password
+            <i style="color: #bdbdbd">(we need your current password to confirm your changes)</i></a>
+            <%= f.password_field :current_password, autocomplete: "off", id: "signup_password_curr_text_field", placeholder: "Current Password"%></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Update", class: "submit-button" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%">
+    <br>
+    <a style="color: black;">Unhappy? </a><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+    <br>
+    <br>
+  </div>
+
+  <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%; border: 0; text-align : left;">
+    <%= link_to "<i class=\"material-icons\">arrow_back</i>".html_safe, :back, style: "text-align : left;" %>
+    <br>
+    <br>
+  </div>
+
+</div>

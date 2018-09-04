@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<h1 id="users_h1"><i class="material-icons">memory</i> <a class="h1s">FPGAs<a></h1>
+
+<div class="main-box clearfix">
+	<div class="table-responsive">
+		<table class="table user-list">
+			<thead>
+				<tr>
+					<th><span>Family</span></th>
+          <th><span>Model</span></th>
+					<th><span>Name</span></th>
+					<th class="text-center"><span>Created</span></th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td class="head_blank"></td>
+				</tr>
+			</thead>
+			<tbody>
+	      <% @fpgas.each do |user| %>
+	  			<tr>
+	  				<td>
+	  					<span class="fpga-name"><%= user.family %></span >
+	  				</td>
+            <td>
+	  					<span class="label label-default"><%= user.model %></span >
+	  				</td>
+            <td>
+	  					<span class="label label-default"><%= user.name %></span >
+	  				</td>
+	  				<td>
+	  					<span class="label label-default"><%= user.created_at.strftime("%d-%m-%Y")%></span >
+	  				</td>
+
+	  				<td style="width: 20%;">
+							<%= link_to("<span class=\"fa-stack\">
+	              <i class=\"material-icons\">zoom_in</i>
+	            </span>".html_safe, user, class: "table-link")%>
+							<% if can? :create, User %>
+		            <%= link_to("<span class=\"fa-stack\">
+		              <i class=\"material-icons\">edit</i>
+		            </span>".html_safe, edit_fpga_path(user), class: "table-link")%>
+							<%else%>
+								<%= link_to_if((can? :create, User), "<span class=\"fa-stack\", style=\"margin-left: 5px; margin-right: 5px;\">
+									<i class=\"material-icons\", style=\"background-color: #6868ed;\">edit</i>
+								</span>".html_safe, edit_fpga_path(user), class: "table-link")%>
+							<% end %>
+							<% if can? :create, User %>
+								<%= link_to("<span class=\"fa-stack\">
+								 <i class=\"material-icons\">delete</i>
+							 </span>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "table-link danger" )%>
+							<%else%>
+								<%= link_to_if((can? :create, User), "<span class=\"fa-stack\", style=\"margin-left: 5px; margin-right: 5px;\">
+									<i class=\"material-icons\", style=\"background-color: #6868ed;\">delete</i>
+								</span>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "table-link danger")%>
+							<% end %>
+
+	            <!-- <%= link_to("<span class=\"fa-stack\">
+	             <i class=\"material-icons\">zoom_in</i>
+	             </span>".html_safe, user, class: "table-link")%>
+	            <%= link_to("<span class=\"fa-stack\">
+	             <i class=\"material-icons\">edit</i>
+	             </span>".html_safe, edit_fpga_path(user), class: "table-link")%>
+							<%= link_to("<span class=\"fa-stack\">
+							 <i class=\"material-icons\">delete</i>
+						   </span>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "table-link danger" )%> -->
+	         	</td>
+	  			</tr>
+					<tr>
+						<td class="blank"></td>
+					</tr>
+	      <% end %>
+			</tbody>
+		</table>
+	</div>
+
+	<% if can? :create, User %>
+  <div>
+
+    <%= button_to "New", new_fpga_path, :class => "inbox-sf-add-btn tip", :method => :get, :id => "open-contacts-dialog-btn" %>
+  </div>
+	<% end %>
+
+</div>

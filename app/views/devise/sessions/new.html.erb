@@ -1,0 +1,50 @@
+<% provide(:title, "Login") %>
+<div class="container login">
+
+  <div class="login-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+    <br>  <h4>Login</h1> <br>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="login_email_icon_div" style="display: flex;">
+        <div class="login_email_icon" style="width:10%">
+          <br> <i class="material-icons login_email">mail</i>
+        </div>
+        <div class="login_email_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black;">Email</a>   <%= f.email_field :email, autocomplete: "email", placeholder: " name@unb.br", id: "user_email", value: "" %></div>
+        </div>
+      </div>
+
+      <div class="login_password_icon_div" style="display: flex;">
+        <div class="login_password_icon" style="width:10%">
+          <br> <i class="material-icons login_password">lock</i>
+        </div>
+        <div class="login_password_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black; ">Password</a> <%= f.password_field :password, autocomplete: "current-password", id: "user_password", placeholder: " Password"%></div>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field left", style= "height: 100%, display: flex; padding-left: 3%">
+          <%= f.check_box :remember_me, style: "height: 10%" %>
+          <%= f.label :remember_me, style: "padding-left: 20px, height: 10"%>
+        </div>
+      <% end -%>
+      <br>
+      <br>
+
+      <div class="actions"><%= f.submit "Log in", value: "Log in", class: "submit-button", name: "commit", type: "submit" %></div>
+      <a>Forgot your password?</a>
+      <br><br><br>
+
+    <% end %>
+
+  </div>
+
+  <div class="have_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%">
+    <br>
+    <a style="color: black;">Don't have an account? </a>  <%= link_to "Sign up", new_user_registration_path %>
+    <br>
+    <br>
+  </div>
+</div>

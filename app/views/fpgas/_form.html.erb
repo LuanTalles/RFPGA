@@ -1,0 +1,98 @@
+<div class="contact-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+  <%= form_with(model: fpga, local: true) do |form| %>
+    <% if fpga.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(fpga.errors.count, "error") %> prohibited this fpga from being saved:</h2>
+
+        <ul>
+        <% fpga.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if current_page?(new_fpga_path) %>
+      <br>  <h4>New FPGA</h1> <br> <br>
+    <% else %>
+      <br>  <h4>Edit FPGA</h1> <br> <br>
+    <% end %>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">attach_file</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div><a style="float: left; color: black;">Pin assigments</a> <%= form.file_field :pin_assigments, id:"pin_assigments"%></div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">select_all</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div><a style="float: left; color: black;">Family</a> <%= form.text_field :family, id:"family", placeholder: " FPGA Family"%></div>
+      </div>
+    </div>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">memory</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div><a style="float: left; color: black;">Model</a> <%= form.text_field :model, id:"model", placeholder: " FPGA Model"%></div>
+      </div>
+    </div>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">settings_ethernet</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div><a style="float: left; color: black;">Name</a> <%= form.text_field :name, id:"name", placeholder: " FPGA Name"%></div>
+      </div>
+    </div>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">keyboard</i>
+      </div>
+
+      <div class="fpga_name_text_field_div">
+        <div><a style="float: left; color: black;">Switchs</a> <%= form.number_field :switchs, id:"switchs", placeholder: " choose quantity"%></div>
+      </div>
+
+      <div class="fpga_name_text_field_div">
+        <div><a style="float: left; color: black;">Buttons</a> <%= form.number_field :buttons, id:"buttons", placeholder: " choose quantity"%></div>
+      </div>
+
+      <div class="fpga_name_text_field_div">
+        <div><a style="float: left; color: black;">Leds</a> <%= form.number_field :leds, id:"leds", placeholder: " choose quantity"%></div>
+      </div>
+
+      <div class="fpga_name_text_field_div">
+        <div><a style="float: left; color: black;">7-Seg. Displays</a> <%= form.number_field :sevensegs, id:"sevensegs", placeholder: " choose quantity"%></div>
+      </div>
+    </div>
+
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">short_text</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div><a style="float: left; color: black;">FPGA brief</a> <%= form.text_area :brief, id:"brief", placeholder: "  FPGA brief ... "%></div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="submit-button_div"><input type="submit" value="Submit" class="submit-button"></div>
+
+  <% end %>
+  <br>
+</div>

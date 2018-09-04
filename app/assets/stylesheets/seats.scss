@@ -1,0 +1,48 @@
+// Place all the styles related to the Seats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+i.material-icons.seat_name
+{ line-height: 30px; color: #444444;}
+
+i.material-icons.seat_fpga
+{ line-height: 48px; color: #444444;}
+
+#seat_name_text_field
+{
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  height: 30px;
+  background-color: white;
+  text-indent: 4px;
+  border-radius: 5px;
+}
+
+.seat_name_text_field_div > div > .select-wrapper
+{
+  float: none;
+  right: 0px;
+}
+
+.seat_name_text_field_div > div > .select-wrapper > .caret {
+  font-size: 16px !important;
+  color: #ee6e73 !important;
+  left: 133px !important;
+  height: 46px !important;
+  border-left: 1px solid #ddd !important;
+  line-height: 46px !important;
+  width: 17px;
+}
+
+
+.seat_name_text_field_div > div > .select-wrapper > .select-dropdown {
+  font-weight: 500;
+  width: 150px !important;
+}
+
+.fpga-name {
+  display: block;
+  font-size: 1em;
+  padding-top: 3px;
+
+}

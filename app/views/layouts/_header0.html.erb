@@ -1,0 +1,18 @@
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a class="brand-logo center" href="/" id="logo-container">
+            <%= link_to root_path do %>
+              <img height="40" src="http://www.marca.unb.br/img/assinatura_cor/as_comp_cor.gif" style="fill: white !important;" width="300"  alt="" class="responsive-img">
+            <% end %>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><%= link_to 'Home',    root_path %></li>
+          <li><%= link_to 'About',    about_path %></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+          <li><%= link_to 'Home',    root_path %></li>
+          <li><%= link_to 'About',    about_path %></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>

@@ -1,0 +1,95 @@
+  <div class="contact-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+    <%= form_with(model: seat, local: true) do |form| %>
+      <% if seat.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(seat.errors.count, "error") %> prohibited this seat from being saved:</h2>
+
+          <ul>
+          <% seat.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if current_page?(new_seat_path) %>
+        <br>  <h4 style="color : #2bb6a3">New Seat</h4> <br> <br>
+      <% elsif current_page?(@seat) %>
+        <br> <h4 style="color : #2bb6a3">Seat</h4> <br>
+      <% else %>
+        <br>  <h4 style="color : #2bb6a3">Edit Seat</h4> <br>
+      <% end %>
+
+      <div class="seat_name_icon_div" style="display: flex;">
+        <div class="seat_usename_icon" style="width:10%">
+          <br> <i class="material-icons seat_name">event_seat</i>
+        </div>
+        <div class="seat_name_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black;">Nome</a>
+            <% if current_page?(@seat) %>
+              <%= form.text_field :name, id:"seat_name_text_field", placeholder: " Seat Name", disabled: true%>
+            <% else %>
+              <%= form.text_field :name, id:"seat_name_text_field", placeholder: " Seat Name"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="seat_name_icon_div" style="display: flex;">
+        <div class="seat_usename_icon" style="width:10%">
+          <br>
+          <% if current_page?(@seat) %>
+            <%= link_to "<i class=\"material-icons seat_fpga\" style=\"color: #2bb6a3\">memory</i>".html_safe, seat.fpga%>
+          <% else %>
+            <i class="material-icons seat_fpga">memory</i>
+          <% end %>
+        </div>
+        <div class="seat_name_text_field_div" style="width:80%;">
+          <div><a style="float: left; color: black;">FPGA</a> <br>
+            <% if !current_page?(@seat) %>
+              <select name="seat[fpga_id]" id="seat_fpga_id">
+            <% else %>
+              <select name="seat[fpga_id]" id="seat_fpga_id" disabled>
+            <% end %>
+            <%if seat.fpga.present? %>
+              <option value="<%=seat.fpga.id%>" selected><%=seat.fpga.name%></option>
+              <% if !current_page?(@seat) %>
+                <% @fpgas.where.not(id: seat.fpga.id).each do |fpga| %>
+                  <option value="<%= fpga.id%>"><%=fpga.name%></option>
+                <% end %>
+              <% end %>
+            <%else%>
+              <option value="" disabled selected>SELECT</option>
+              <% if !current_page?(@seat) %>
+                <% @fpgas.each do |fpga| %>
+                  <option value="<%= fpga.id%>"><%=fpga.name%></option>
+                <% end %>
+              <% end %>
+            <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <% if !current_page?(@seat) %>
+        <br>
+        <br>
+        <div class="submit-button_div"><input type="submit" value="Submit" class="submit-button"></div>
+      <% else %>
+      <br>
+        <br>
+        <%= link_to "<button type=\"button\" style=\"border-radius: 5px; border: 1px solid #2bb6a3; \">Start to use seat</button>".html_safe, use_path(@seat), style: "text-align : left;  color: #ee6e73;"%>
+
+      <% end %>
+    <% end %>
+    <br>
+  </div>
+
+  <% if !current_page?(@seat) %>
+    <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%">
+      <br>
+      <a style="color: black;">FPGA not found? </a><%= link_to "New FPGA", new_fpga_path %>
+      <br>
+      <br>
+    </div>
+    <% end %>

@@ -1,0 +1,79 @@
+<% provide(:title, "Profile") %>
+<div class="container signup">
+
+  <div class="signup-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+    <br>  <h4>Profile</h1> <br>
+
+      <div class="container1">
+        <%if @user.avatar.attached?%>
+          <%= image_tag(@user.avatar, id: "img", alt: "tap")%>
+        <%else%>
+          <a class="material-icons" id="img">person</a>
+        <% end %>
+
+      </div>
+
+      <br>
+      <br>
+
+      <div class="signup_usename_icon_div" style="display: flex;">
+        <div class="signup_usename_icon" style="width:10%">
+          <br> <i class="material-icons signup_username">person</i>
+        </div>
+        <div class="signup_username_text_field_div" style="width:80%;">
+          <div><div><a style="float: left; color: black;">Username</a></div> <br> <div id="perfil_name" style="text-indent: 4px;"><a style="width: 100%; height: 30px; line-height: 30px;"><%= @user.name%></a></div> </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="signup_email_icon_div" style="display: flex;">
+        <div class="signup_email_icon" style="width:10%">
+          <br> <i class="material-icons signup_email">mail</i>
+        </div>
+        <div class="signup_email_text_field_div" style="width:80%;">
+          <div><div><a style="float: left; color: black;">Email</a></div> <br> <div id="perfil_email" style="text-indent: 4px;" ><a style="width: 100%; height: 30px; line-height: 30px;"> <%= @user.email%> </a></div></div>
+        </div>
+      </div>
+
+      <br>
+<!--
+      <div class="signup_email_icon_div" style="display: flex;">
+        <div class="signup_email_icon" style="width:10%">
+          <br> <i class="material-icons signup_email">mail</i>
+        </div>
+        <div class="signup_email_text_field_div" style="width:80%;">
+          <div><div><a style="float: left; color: black;">CPF</a></div> <br> <div id="perfil_email" ><a style="width: 100%; height: 30px; line-height: 30px;"> 04302495197 </a></div></div>
+        </div>
+      </div>
+
+      <br> -->
+      <!-- <br> -->
+      <br>
+  </div>
+
+  <% if can? :create, User %>
+    <% if current_user.id == @user.id%>
+      <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%">
+        <br>
+        <a style="color: black;">Change parameters? </a><%= link_to 'Edit', edit_user_registration_path(@user) %>
+        <br>
+        <br>
+      </div>
+    <%end%>
+  <%else%>
+    <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%">
+      <br>
+      <a style="color: black;">Change parameters? </a><%= link_to 'Edit', edit_user_registration_path(@user) %>
+      <br>
+      <br>
+    </div>
+  <%end%>
+
+  <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%; border: 0; text-align : left;">
+    <%= link_to "<i class=\"material-icons\">arrow_back</i>".html_safe, :back, style: "text-align : left;" %>
+    <br>
+    <br>
+  </div>
+
+</div>

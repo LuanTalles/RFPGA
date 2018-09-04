@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<h1 id="users_h1"><i class="material-icons">people</i> <a class="h1s">Users<a></h1>
+
+
+<div class="main-box clearfix">
+	<div class="table-responsive">
+		<table class="table user-list">
+			<thead>
+				<tr>
+					<th><span>User</span></th>
+					<th><span>Created</span></th>
+					<th class="text-center"><span>Status</span></th>
+					<th><span>Email</span></th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td class="head_blank"></td>
+				</tr>
+			</thead>
+			<tbody>
+	      <% @users.each do |user| %>
+	  			<tr>
+	  				<td>
+							<%if user.avatar.attached?%>
+		            <%= image_tag(user.avatar, id: "profile-img") %>
+		          <% else %>
+		            <a class="material-icons" id="profile-icon-img">person</a>
+		          <% end %>
+	  					<a href="#" class="user-link"><%= user.name %></a>
+							<% if user.admin %>
+								<span class="user-subhead">Admin</span>
+	            <%else%>
+								<span class="user-subhead">User</span>
+	            <% end %>
+	  				</td>
+	  				<td>
+	  				<span class="user-subhead">	<%= user.created_at.strftime("%d-%m-%Y")%></span>
+	  				</td>
+	  				<td class="text-center">
+	  					<span class="label label-default">Active</span>
+	  				</td>
+	  				<td>
+	  					<a href="#"><%= user.email %></a>
+	  				</td>
+	  				<td style="width: 20%;">
+	            <%= link_to("<span class=\"fa-stack\">
+	              <i class=\"material-icons\">zoom_in</i>
+	            </span>".html_safe, user, class: "table-link")%>
+							<%if user == current_user%>
+		            <%= link_to("<span class=\"fa-stack\">
+		              <i class=\"material-icons\">edit</i>
+		            </span>".html_safe, edit_user_registration_path(user), class: "table-link")%>
+							<%else%>
+								<%= link_to_if(user == current_user, "<span class=\"fa-stack\", style=\"margin-left: 5px; margin-right: 5px;\">
+									<i class=\"material-icons\", style=\"background-color: #6868ed;\">edit</i>
+								</span>".html_safe, edit_user_path(user), class: "table-link")%>
+							<% end %>
+							<%if user == current_user%>
+								<%= link_to("<span class=\"fa-stack\">
+								 <i class=\"material-icons\">delete</i>
+							 </span>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "table-link danger" )%>
+							<%else%>
+								<%= link_to_if(user == current_user, "<span class=\"fa-stack\", style=\"margin-left: 5px; margin-right: 5px;\">
+									<i class=\"material-icons\", style=\"background-color: #6868ed;\">delete</i>
+								</span>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }, class: "table-link danger")%>
+							<% end %>
+	         	</td>
+	  			</tr>
+					<tr>
+						<td class="blank"></td>
+					</tr>
+	      <% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+I"­(function() {
+  window.App || (window.App = {});
+
+  App.init = function() {};
+
+  $(document).on("turbolinks:load", function() {
+    return App.init();
+  });
+
+}).call(this);
+:ET

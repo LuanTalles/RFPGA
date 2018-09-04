@@ -1,0 +1,68 @@
+<% provide(:title, "Seat") %>
+<div class="container seat">
+  <div class="div-sup-seat" style=" height:100%; width:100%; position:absolute;">
+
+
+    <div class="seat-region" style="text-align:center; margin-top: 4%; margin-bottom: 2%; position:relative">
+      <ul>
+        <li><div class="sevensegdisplays_div"><%= image_tag("7segdisplays.svg", class: "img-responsive sevensegdisplays") %></div></li>
+        <li><%= image_tag("buttons.png", class: "img-responsive buttons") %></li>
+        <li><%= image_tag("leds.png", class: "img-responsive leds") %></li>
+        <li><%= image_tag("vga.png", class: "img-responsive vga") %></li>
+        <li><%= image_tag("some_pins.png", class: "img-responsive some_pins") %></li>
+        <li><%= image_tag("usb.png", class: "img-responsive usb1") %></li>
+        <li><%= image_tag("usb.png", class: "img-responsive usb2") %></li>
+        <li><%= image_tag("power.png", class: "img-responsive power") %></li>
+        <li><%= image_tag("batery.png", class: "img-responsive batery") %></li>
+        <li><%= image_tag("fpga.png", class: "img-responsive fpga") %></li>
+        <li><%= image_tag("rom.png", class: "img-responsive rom") %></li>
+        <li><%= image_tag("display.png", class: "img-responsive display") %></li>
+        <li><div id="div_switch">
+          <%= link_to image_tag("path137.png", class: "img-responsive path137"), "" %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1371"), about_path %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1372"), about_path %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1373"), about_path %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1374"), about_path %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1375"), about_path %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1376"), about_path %>
+          <%= link_to image_tag("path137.png", class: "img-responsive path1377"), about_path %>
+        </div> </li>
+        <li><%= image_tag("ci.png", class: "img-responsive ci1") %></li>
+        <li><%= image_tag("ci.png", class: "img-responsive ci2") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp1") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp2") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp3") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp4") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp5") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp6") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp7") %></li>
+        <li><%= image_tag("inp.png", class: "img-responsive inp8") %></li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- #div_switch  > a
+{
+  position: static;
+  width: -webkit-calc(100%/9);
+}
+
+#div_switch  > a > img
+{
+  position: relative;
+  width: -webkit-calc(100%/9);
+
+}
+
+
+
+.path1371 {transform: scaleX(-1) rotate(180deg);}
+.path1372 {transform: scaleX(-1) rotate(180deg);}
+.path1373 {transform: scaleX(-1) rotate(180deg);}
+.path1374 {transform: scaleX(-1)  }
+.path1375 {transform: scaleX(-1)  }
+.path1376 {transform: scaleX(-1)  }
+.path1377 {transform: rotate(180deg);} -->

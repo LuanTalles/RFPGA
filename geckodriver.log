@@ -1,0 +1,27 @@
+1533060899667	geckodriver	INFO	geckodriver 0.21.0
+1533060899679	geckodriver	INFO	Listening on 127.0.0.1:54573
+1533060899918	geckodriver	INFO	geckodriver 0.21.0
+1533060899926	geckodriver	INFO	Listening on 127.0.0.1:49045
+1533060900663	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.lwD1KT8P6xkq"
+*** You are running in headless mode.
+1533060900923	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.UuvncZcxD81X"
+*** You are running in headless mode.
+1533060903080	geckodriver	INFO	geckodriver 0.21.0
+1533060903083	geckodriver	INFO	Listening on 127.0.0.1:38309
+1533060904086	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.4XqXv9xQFNUg"
+*** You are running in headless mode.
+1533060905483	Marionette	INFO	Listening on port 39311
+1533060905503	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: chrome://browser/content/content.js, line 670: TypeError: docShell.failedChannel is null
+1533060962698	geckodriver	INFO	geckodriver 0.21.0
+1533060962701	geckodriver	INFO	Listening on 127.0.0.1:60851
+1533060962951	geckodriver	INFO	geckodriver 0.21.0
+1533060962954	geckodriver	INFO	Listening on 127.0.0.1:39269
+1533060963704	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.DIBftG8MqfnU"
+*** You are running in headless mode.
+1533060963956	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Cqhef8PMIR2H"
+*** You are running in headless mode.
+1533060965109	Marionette	INFO	Listening on port 41777
+1533060965214	Marionette	WARN	TLS certificate errors will be ignored for this session
+1533060965398	Marionette	INFO	Listening on port 44389
+1533060965474	Marionette	WARN	TLS certificate errors will be ignored for this session

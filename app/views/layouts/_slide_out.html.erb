@@ -1,0 +1,114 @@
+
+<ul id="slide-out" class="side-nav fixed">
+
+  <li class="side-nav-profile">
+
+      <div class="side-nav-profile-close">
+        <a class="material-icons hide-on-med-and-down" id="slide_out_close">close</a>
+      </div>
+      <div class="side-nav-profile-image">
+        <% if user_signed_in? %>
+          <%if current_user.avatar.attached?%>
+            <%= image_tag(current_user.avatar, id: "profile-img") %>
+          <% else %>
+            <a class="material-icons" id="profile-icon-img">person</a>
+          <% end %>
+        <% else %>
+
+          <a class="material-icons" id="profile-icon-img">person</a>
+
+        <% end %>
+
+      </div>
+      <% if user_signed_in? %>
+        <div class="sidenav-profile-info">
+          <ul >
+            <li class="profile-user"><div><i class="side-nav-profile-username" id="side-nav-profile-user"><%= current_user.name%>
+            </i>
+              <%= link_to("<i class=\"material-icons\" id=\"profile-edit-user\">edit</i>".html_safe, edit_user_registration_path(@user), id: "edit")%>
+            </div>
+          </li>
+
+            <% if can? :create, User %>
+              <li><a class="side-nav-profile-role">Admin</a></li>
+            <%else%>
+              <li><a class="side-nav-profile-role">User</a></li>
+            <% end %>
+
+          </ul>
+        </div>
+      <% end %>
+
+  </li>
+  <li class="side-nav-search">
+    <div class="nav-wrapper-search">
+      <form>
+        <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search" style="left: 0px;right: 0px; transform: translateY(0px); line-height: normal"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+        </div>
+      </form>
+  </div>
+  </li>
+
+  <li class="sign-in-out">
+      <div>
+        <ul>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to("<i class=\"material-icons logout\">exit_to_app</i>Logout".html_safe, destroy_user_session_path, method: :delete)%>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to("<i class=\"material-icons signin\">exit_to_app</i>Login".html_safe, new_user_session_path)%>
+            </li>
+            <li>
+              <%= link_to("<i class=\"material-icons signup\">person_add</i>Sign Up".html_safe, new_user_registration_path)%>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+  </li>
+
+  <li class="side-nav-navegation">
+    <div>
+      <ul>
+        <li><%= link_to("<i class=\"material-icons home\">home</i>Home".html_safe, root_path)%></li>
+        <% if user_signed_in? %>
+
+        <li><%= link_to("<i class=\"material-icons person\">person</i>Profile".html_safe, current_user)%></li>
+        <%end%>
+
+        <% if can? :create, User %>
+        <li><%= link_to("<i class=\"material-icons person\">people</i>Users".html_safe, users_path)%></li>
+        <%end%>
+
+
+
+
+        <li>
+              <div style="display: block; height: 48px;">
+
+
+              <i class="material-icons people temp">event_seat</i>
+
+              <select id="appearance-select" onchange="location = this.value;" style="width: 50%">
+              <option value="" disabled selected><b>Seats</b></option>
+              <option value="<%= seats_path%>"><b>All Seats</b></option>
+              <%@fpgas = Seat.all%>
+              <% @fpgas.each do |fpga| %>
+
+              <option value="<%= seat_path(fpga)%>"><%=fpga.name%></option>
+              <%end%>
+              </select>
+              </div>
+          </li>
+
+        <li><%= link_to("<i class=\"material-icons info\">info</i>About".html_safe, about_path)%></li>
+        <li><%= link_to("<i class=\"material-icons near_me\">near_me</i>Contact".html_safe, contact_path)%></li>
+
+      </ul>
+    </div>
+  </li>
+</ul>

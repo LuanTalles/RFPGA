@@ -1,0 +1,156 @@
+<div class="container contact">
+  <div class="contact-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+
+    <br>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">select_all</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div>
+          <div><a style="float: left; color: black;">Family</a></div>
+          <br>
+          <div id="div_family"><a><%= @fpga.family %></a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">memory</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div>
+          <div>
+            <a style="float: left; color: black;">Model</a>
+          </div>
+          <br>
+          <div id="div_model">
+            <a><%= @fpga.model %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">settings_ethernet</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div>
+          <div>
+            <a style="float: left; color: black;">Name</a>
+          </div>
+          <br>
+          <div id="div_name">
+            <a><%= @fpga.name %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">keyboard</i>
+      </div>
+
+      <div class="seat_usename_icon" style="width:80%; display: flex;">
+        <div class="switchs_field_div", style="margin-right: 2%">
+          <div>
+            <div>
+              <a style="float: left; color: black;">Switchs</a>
+            </div>
+            <br>
+            <div id="div_switchs">
+              <a><%= @fpga.switchs %></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="switchs_field_div", style="margin-right: 2%">
+          <div>
+            <div>
+              <a style="float: left; color: black;">Buttons</a>
+            </div>
+            <br>
+            <div id="div_buttons1">
+              <a><%= @fpga.buttons %></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="switchs_field_div", style="margin-right: 2%">
+          <div>
+            <div>
+              <a style="float: left; color: black;">Leds</a>
+            </div>
+            <br>
+            <div id="div_leds">
+              <a><%= @fpga.leds %></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="switchs_field_div">
+          <div>
+            <div>
+              <a style="float: left; color: black;">7seg</a>
+            </div>
+            <br>
+            <div id="div_sevensegs">
+              <a><%= @fpga.sevensegs %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="seat_name_icon_div" style="display: flex;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">short_text</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div>
+          <div>
+            <a style="float: left; color: black;">Brief</a>
+          </div>
+          <br>
+          <div id="brief">
+            <a><%= @fpga.brief %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="seat_name_icon_div" style="display: flex; margin-top: 5px;">
+      <div class="seat_usename_icon" style="width:10%">
+        <br> <i class="material-icons seat_name">attachment</i>
+      </div>
+      <div class="seat_name_text_field_div" style="width:80%;">
+        <div>
+          <div><a style="float: left; color: black; line-height: 38px; height: 10px;">Pin assigments</a></div>
+          <br>
+          <div id="pin_assigments_div">
+            <%if @fpga.pin_assigments.attached?%>
+              <%= link_to @fpga.pin_assigments.filename, url_for(@fpga.pin_assigments), style: "color: red;" %>
+            <%else%>
+              <a>No file attached</a>
+            <%end%>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+  </div>
+
+
+  <div class="have_an_account" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2%; border: 0; text-align : left;">
+    <%= link_to "<i class=\"material-icons\">arrow_back</i>".html_safe, fpgas_path, style: "text-align : left;" %>
+    <br>
+    <br>
+  </div>
+</div>

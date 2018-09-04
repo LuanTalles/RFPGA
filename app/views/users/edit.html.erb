@@ -1,0 +1,86 @@
+<% provide(:title, "Edit") %>
+<div class="container edit">
+
+  <div class="signup-region" style="text-align:center; margin-left: 10%; margin-right: 10%; margin-top: 2%; margin-bottom: 2%; display: block; ">
+  <br>  <h4>Edit User</h1> <br>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@user.errors.count, "erro(s)") %> encontrado(s):</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="signup_usename_icon_div" style="display: flex;">
+    <div class="signup_usename_icon" style="width:10%">
+      <br> <i class="material-icons signup_username">person</i>
+    </div>
+    <div class="signup_username_text_field_div" style="width:80%;">
+      <div><a style="float: left; color: black;">Username</a> <%= f.text_field :name, id: "signup_username_text_field", placeholder: "  Username"%></div>
+    </div>
+  </div>
+
+  <div class="signup_email_icon_div" style="display: flex;">
+    <div class="signup_email_icon" style="width:10%">
+      <br> <i class="material-icons signup_email">mail</i>
+    </div>
+    <div class="signup_email_text_field_div" style="width:80%;">
+      <div><a style="float: left; color: black;">Email</a>   <%= f.email_field :email, autocomplete: "email", placeholder: " name@unb.br", id: "signup_email_text_field" %></div>
+    </div>
+  </div>
+
+  <div class="signup_password_icon_div" style="display: flex;">
+    <div class="signup_password_icon" style="width:10%">
+      <br> <i class="material-icons signup_password">lock</i>
+    </div>
+    <div class="signup_password_text_field_div" style="width:80%;">
+      <div>
+        <% if @minimum_password_length %>
+        <a style="float: left; color: black; ">Password
+        <i style="color: #bdbdbd">(<%= @minimum_password_length %> characters minimum ) (leave blank if you don't want to change it)</i></a>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", id: "signup_password_text_field", placeholder: "  Password"%></div>
+    </div>
+  </div>
+
+  <div class="signup_password_c_icon_div" style="display: flex;">
+    <div class="signup_password_c_icon" style="width:10%">
+      <br> <i class="material-icons signup_password_c">lock_outline</i>
+    </div>
+    <div class="signup_password_c_text_field_div" style="width:80%;">
+      <div><a style="float: left; color: black; ">Confirm Password</a> <%= f.password_field :password_confirmation, autocomplete: "off", id: "signup_password_c_text_field", placeholder: "  Confirm Password"%></div>
+    </div>
+  </div>
+  <br>
+
+  <div class="signup_password_icon_div" style="display: flex;">
+    <div class="signup_password_icon" style="width:10%">
+      <br> <i class="material-icons signup_password">lock</i>
+    </div>
+    <div class="signup_password_text_field_div" style="width:80%;">
+      <div>
+        <a style="float: left; color: black; ">Current Password
+        <i style="color: #bdbdbd">(we need your current password to confirm your changes)</i></a>
+        <%= f.password_field :current_password, autocomplete: "off", id: "signup_password_text_field", placeholder: "  Current Password"%></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+</div>
+</div>
+
+<br>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if can? :create, User %>
+| <%= link_to 'Back', users_path %> 
+<%end%>

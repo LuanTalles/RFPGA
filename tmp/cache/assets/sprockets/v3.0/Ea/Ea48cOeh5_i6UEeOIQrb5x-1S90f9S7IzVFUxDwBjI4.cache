@@ -1,0 +1,14 @@
+I"û(function() {
+  window.App || (window.App = {});
+
+  App.init = function() {
+    $('.dropdown-button').dropdown();
+    return $('select').formSelect();
+  };
+
+  $(document).on("turbolinks:load", function() {
+    return App.init();
+  });
+
+}).call(this);
+:ET
