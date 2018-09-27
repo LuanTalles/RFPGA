@@ -86,25 +86,31 @@
 
 
 
-
+        <% if user_signed_in? %>
         <li>
-              <div style="display: block; height: 48px;">
+              <div id ="select-slide_out" style="display: block; height: 48px;">
 
 
               <i class="material-icons people temp">event_seat</i>
 
-              <select id="appearance-select" onchange="location = this.value;" style="width: 50%">
-              <option value="" disabled selected><b>Seats</b></option>
-              <option value="<%= seats_path%>"><b>All Seats</b></option>
-              <%@fpgas = Seat.all%>
-              <% @fpgas.each do |fpga| %>
+              <select id="appearance-select" style="width: 50%">
+              <option value="" disabled selected>Seats</option>
+              <option value="<%= seats_path%>">All Seats</option>
+              <% if url_for().split("/").last != "use" %>
+                <% @all_seat.each do |fpga| %>
+                  <%if fpga.user_id == nil%>
+                    <option value="<%= seat_path(fpga)%>"><%=fpga.name%></option>
+                  <%else%>
+                    <option value="" disabled><%=fpga.name%> - Busy</option>
+                  <%end%>
 
-              <option value="<%= seat_path(fpga)%>"><%=fpga.name%></option>
+                <%end%>
               <%end%>
+
               </select>
               </div>
           </li>
-
+        <%end%>
         <li><%= link_to("<i class=\"material-icons info\">info</i>About".html_safe, about_path)%></li>
         <li><%= link_to("<i class=\"material-icons near_me\">near_me</i>Contact".html_safe, contact_path)%></li>
 

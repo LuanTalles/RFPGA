@@ -8,16 +8,21 @@
         });
         $("#menu").click(function(){
             $("#slide-out").show();
+            $(".contact-region, .have_an_account").css({"margin-left": "10%","margin-right": "10%"});
             $("header, main ,footer").css("padding-left","300px");
             $("#menu").hide();
 
         });
+        //
+        // $("#slid_out").onchange(function(){
+        //   if ( $(this).css("transform") == "-100%") {
+        //     $(".side-nav-profile-close").trigger('click');
+        //   }
+        // });
 
         $('select').material_select();
 
-        // $('.dropdown-button').dropdown({
-        //   hover: false
-        // });
+        // $(".button-collapse").sideNav();
 
         $(".dropdown-trigger").dropdown({
               inDuration: 300,
@@ -35,10 +40,29 @@
             //
             //   }
             // });
+
+            $("#slide-out > li > div > ul > li > a, #edit, #logout_header").click(function(){
+              var str = document.documentURI;
+              var l = str.length;
+              var sub = str.substring(l-3, l);
+              if(sub == "use")
+              {
+                if (window.confirm('Do you really want to leave the seat?'))
+                {
+                  $("#free_seat").trigger('click');
+                  return true;
+                }
+                else {
+                  // $("#appearance-select").val() = "";
+                  return false;
+                }
+              }
+            });
+
     });
 
-    $("#btn_use_seat").bind('click', function() {
-      $("#link_use").click();
+    $("#start_seat").bind('click', function() {
+      $("#slid_out > li").css({"pointer-events": "none","-webkit-text-emphasis-color": "white"});
     });
 
     $("#path1371, #path1372, #path1373, #path1374").bind('click', function() {
@@ -80,9 +104,7 @@
       });
 
       $(document).keyup( function(e) {
-        current_page = document.documentURI;
-        if(current_page == "http://localhost:3000/seat3")
-        {
+
           switch(e.key) {
             case 'a':
               $("#button1").trigger("mouseup");
@@ -96,7 +118,7 @@
             case 'f':
               $("#button4").trigger("mouseup");
               break;
-          }
+
         }
       });
 
@@ -121,3 +143,29 @@
       $("#img").bind('click',function(){
           $("#image_src").click();
         });
+
+      // $(function() {
+        $('#appearance-select').on('change', function() {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+          var str = document.documentURI;
+          var l = str.length;
+          var sub = str.substring(l-3, l);
+          if(sub == "use")
+            if(!window.confirm('Do you really want to leave the seat?'))
+            return false;
+
+          $("#free_seat").trigger('click');
+          window.location = url; // redirect
+          return true;
+          }
+        });
+      // });
+
+      // function execute(command) {
+      //   const exec = require('child_process').exec
+      //
+      //   exec(command, (err, stdout, stderr) => {
+      //     process.stdout.write(stdout)
+      //   })
+      // }

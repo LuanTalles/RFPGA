@@ -3,8 +3,8 @@
   <nav><!-- nav begin -->
 
     <div class="nav-wrapper"><!-- nav-wrapper begin -->
-      <a href="#" data-activates="slide-out" id="menu" class="hide-on-med-and-down"><i class="material-icons menu">menu</i></a>
-      <a href="#" data-activates="slide-out" class="button-collapse show-on-medium-and-down"><i class="material-icons menu">menu</i></a>
+      <a href="#" data-activates="slide-out" id="menu" class="button-collapse hide-on-med-and-down"><i class="material-icons menu">menu</i></a>
+      <a href="#" data-activates="slide-out" id="menu" class="button-collapse show-on-medium-and-down"><i class="material-icons menu">menu</i></a>
 
       <a href="https://www.unb.br" class="center brand-logo"><%= image_tag("logo_unb.png", class: "img-responsive careerpage", style: "margin:5px 0px", id: "logo_unb") %><%= image_tag("logo_mobile_unb.png", class: "img-responsive careerpage", style: "margin:1px 0px", id: "logo_mobile_unb") %></a><!-- Nav mobile wrapped Logo -->
 
@@ -12,7 +12,7 @@
         <% if user_signed_in? %>
 
           <li style="height: auto">
-            <%= link_to("<i class=\"material-icons\" style=\"width:30px; height:30px;\">input</i>".html_safe, destroy_user_session_path, method: :delete, style: "height:60px;")%>
+            <%= link_to("<i class=\"material-icons\" style=\"width:30px; height:30px;\">input</i>".html_safe, destroy_user_session_path, method: :delete, style: "height:60px;", id: "logout_header")%>
           </li>
         <% else %>
 

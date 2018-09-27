@@ -14,6 +14,24 @@ class SeatsController < ApplicationController
 
   def use
     @seat = Seat.find(params[:id])
+    @seat.user_id = current_user.id
+    @seat.time_that_user_sat = DateTime.now
+    @seat.save
+
+  end
+
+  # def free
+  #   @seat_free = Seat.where(user_id: current_user.id)
+  #   # @seat_free.user_id = nil
+  #   # @seat.time_that_user_sat = DateTime.now
+  #   # @seat_free.save
+  # end
+
+  def free
+      @seat = Seat.find(params[:id])
+      @seat.user_id = nil
+      # @seat.time_that_user_sat = DateTime.now
+      @seat.save
   end
 
   # GET /seats/new
@@ -48,8 +66,8 @@ class SeatsController < ApplicationController
   def update
     respond_to do |format|
       if @seat.update(seat_params)
-        format.html { redirect_to @seat, notice: 'Seat was successfully updated.' }
-        format.json { render :show, status: :ok, location: @seat }
+        # format.html { redirect_to @seat, notice: 'Seat was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @seat }
       else
         format.html { render :edit }
         format.json { render json: @seat.errors, status: :unprocessable_entity }
@@ -75,6 +93,6 @@ class SeatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seat_params
-      params.require(:seat).permit(:name, :fpga_id)
+      params.require(:seat).permit(:name, :fpga_id, :user_id)
     end
 end
