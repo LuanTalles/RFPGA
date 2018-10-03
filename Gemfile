@@ -23,7 +23,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.2'
 
 # Sempre inclua
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 0.100.2'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

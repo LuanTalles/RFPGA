@@ -1,5 +1,5 @@
 class SeatsController < ApplicationController
-  before_action :set_seat, only: [:show, :edit, :update, :destroy, :use]
+  before_action :set_seat, only: [:show, :edit, :update, :destroy, :use, :free]
 
   # GET /seats
   # GET /seats.json
@@ -13,9 +13,10 @@ class SeatsController < ApplicationController
   end
 
   def use
-    @seat = Seat.find(params[:id])
+    # @seat = Seat.find(params[:id])
     @seat.user_id = current_user.id
     @seat.time_that_user_sat = DateTime.now
+    @seat.last_user_sat_id = current_user.id
     @seat.save
 
   end
@@ -28,9 +29,8 @@ class SeatsController < ApplicationController
   # end
 
   def free
-      @seat = Seat.find(params[:id])
+      # @seat = Seat.find(params[:id])
       @seat.user_id = nil
-      # @seat.time_that_user_sat = DateTime.now
       @seat.save
   end
 
