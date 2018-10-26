@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'file_uploads/new'
-  
+
   get   'about'   =>  'static_pages'
 
   get   'login'   =>  'static_pages'
@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get '/seat/:id/use', to: 'seats#use', as: 'use'
 
   get '/seat/:id/free', to: 'seats#free', as: 'free'
+
+  patch '/fpga/:id', to: 'fpgas#upload_bitstream', as: 'up_bits'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

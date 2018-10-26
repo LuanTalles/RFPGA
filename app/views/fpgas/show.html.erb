@@ -133,8 +133,8 @@
           <div><a style="float: left; color: black; line-height: 38px; height: 10px;">User manual</a></div>
           <br>
           <div id="pin_assigments_div">
-            <%if @fpga.pin_assigments.attached?%>
-              <%= link_to @fpga.pin_assigments.filename, url_for(@fpga.pin_assigments), style: "color: red;" %>
+            <%if @fpga.bitstream.attached?%>
+              <%= link_to @fpga.bitstream.filename, url_for(@fpga.bitstream), style: "color: red;" %>
             <%else%>
               <a>No file attached</a>
             <%end%>

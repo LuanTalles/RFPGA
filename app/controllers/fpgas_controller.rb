@@ -1,5 +1,5 @@
 class FpgasController < ApplicationController
-  before_action :set_fpga, only: [:show, :edit, :update, :destroy]
+  before_action :set_fpga, only: [:show, :edit, :update, :destroy, :upload_bitstream]
 
   # GET /fpgas
   # GET /fpgas.json
@@ -10,8 +10,8 @@ class FpgasController < ApplicationController
   # GET /fpgas/1
   # GET /fpgas/1.json
   def show
-    @fpgas = Fpga.all
-    @fpga = Fpga.find(params[:id])
+    # @fpgas = Fpga.all
+    # @fpga = Fpga.find(params[:id])
   end
 
   # GET /fpgas/new
@@ -21,6 +21,10 @@ class FpgasController < ApplicationController
 
   # GET /fpgas/1/edit
   def edit
+  end
+
+  def upload_bitstream
+    @fpga.update(fpga_params)
   end
 
   # POST /fpgas
@@ -71,6 +75,6 @@ class FpgasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fpga_params
-      params.require(:fpga).permit(:family, :model, :name, :brief, :pin_assigments, :sevensegs, :switchs, :buttons, :leds)
+      params.require(:fpga).permit(:family, :model, :name, :brief, :pin_assigments, :sevensegs, :switchs, :buttons, :leds, :bitstream)
     end
 end

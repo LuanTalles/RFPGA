@@ -1,5 +1,44 @@
 
 <% provide(:title, "Seat") %>
+
+<div class="upload_bitstream">
+
+  <%= form_with(model: @seat.fpga, remote: true, method: :patch, url: up_bits_path(@seat.fpga)) do |form| %>
+    <% if @seat.fpga.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@seat.fpga.errors.count, "error") %> prohibited this fpga from being saved:</h2>
+
+        <ul>
+        <% @seat.fpga.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%# if current_page?(new_fpga_path) %>
+      <!-- <br>  <h4>New FPGA</h1> <br> <br> -->
+    <%# else %>
+      <!-- <br>  <h4>Edit FPGA</h1> <br> <br> -->
+    <%# end %>
+
+
+      <div class="file">
+        <div>
+          <label for="pin_assigments1">Pick a file</label>
+          <%= form.file_field :bitstream, id:"pin_assigments1", direct_upload: true%>
+        </div>
+      </div>
+
+
+    <br>
+
+    <div class="submit-button_div"><input type="submit" value="Submit" class="button"></div>
+  <% end %>
+
+
+</div>
+
 <div class="container seat">
   <div class="div-sup-seat" style=" height:100%; width:100%; position:absolute;">
 
