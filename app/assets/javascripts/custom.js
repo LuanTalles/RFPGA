@@ -65,13 +65,37 @@
       $("#slid_out > li").css({"pointer-events": "none","-webkit-text-emphasis-color": "white"});
     });
 
-    $("#path1371, #path1372, #path1373, #path1374").bind('click', function() {
+    $("#path1373, #path1374").bind('click', function() {
       if ( $(this).css("transform") == "matrix(1, 0, 0, -1, 0, 0)") {
         $(this).css("transform","matrix(1, 0, 0, 1, 0, 0)");
       }
       else
       {
         $(this).css("transform","matrix(1, 0, 0, -1, 0, 0)");
+      }
+    });
+
+    $("#path1371").bind('click', function() {
+      if ( $(this).css("transform") == "matrix(1, 0, 0, -1, 0, 0)") {
+        $(this).css("transform","matrix(1, 0, 0, 1, 0, 0)");
+        $("#flash_msp_seat").trigger("click");
+      }
+      else
+      {
+        $(this).css("transform","matrix(1, 0, 0, -1, 0, 0)");
+        $("#flash_msp_seat").trigger("click");
+      }
+    });
+
+    $("#path1372").bind('click', function() {
+      if ( $(this).css("transform") == "matrix(1, 0, 0, -1, 0, 0)") {
+        $(this).css("transform","matrix(1, 0, 0, 1, 0, 0)");
+        $("#flash_msp2_seat").trigger("click");
+      }
+      else
+      {
+        $(this).css("transform","matrix(1, 0, 0, -1, 0, 0)");
+        $("#flash_msp2_seat").trigger("click");
       }
     });
 
@@ -90,9 +114,24 @@
         switch(e.key) {
           case 'a':
             $("#button1").trigger("mousedown");
+            // $("#flash_msp_seat").click(function() {return true;});
+            // $.ajax({
+            //   type: "GET",
+            //   url: "http://localhost:3000/seat/9/flash_msp",
+            //   success: function(msg) {
+            //   // Do something interesting here.
+            //   }
+            // });
             break;
           case 's':
             $("#button2").trigger("mousedown");
+            // $.ajax({
+            //   type: "GET",
+            //   url: "http://localhost:3000/seat/9/flash_msp",
+            //   success: function(msg) {
+            //     // Do something interesting here.
+            //   }
+            // });
             break;
           case 'd':
             $("#button3").trigger("mousedown");

@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   get '/seat/:id/free', to: 'seats#free', as: 'free'
 
-  patch '/fpga/:id', to: 'fpgas#upload_bitstream', as: 'up_bits'
+  put '/fpga/:id', to: 'fpgas#upload_bitstream', as: 'up_bits'
+
+  get '/seat/:id/flash_msp', to: 'seats#flash_msp', as: 'flash_msp', remote: true
+  get '/seat/:id/flash_msp2', to: 'seats#flash_msp2', as: 'flash_msp2', remote: true
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -3,7 +3,7 @@
 
 <div class="upload_bitstream">
 
-  <%= form_with(model: @seat.fpga, remote: true, method: :patch, url: up_bits_path(@seat.fpga)) do |form| %>
+  <%= form_with(model: @seat.fpga, remote: true, method: :put, url: up_bits_path(@seat.fpga)) do |form| %>
     <% if @seat.fpga.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@seat.fpga.errors.count, "error") %> prohibited this fpga from being saved:</h2>
@@ -26,7 +26,7 @@
       <div class="file">
         <div>
           <label for="pin_assigments1">Pick a file</label>
-          <%= form.file_field :bitstream, id:"pin_assigments1", direct_upload: true%>
+          <%= form.file_field :bitstream, id:"pin_assigments1"%>
         </div>
       </div>
 
@@ -40,7 +40,8 @@
 </div>
 
 <div class="container seat">
-  <div class="div-sup-seat" style=" height:100%; width:100%; position:absolute;">
+  <div class="div-sup-seat" style=" height:100%; width:100%; position:absolute; margin-left: 100px;
+}">
 
 
     <div class="seat-region" style="text-align:center; margin-top: 4%; margin-bottom: 2%; position:relative">
@@ -81,6 +82,8 @@
         <li><%= image_tag("inp.png", class: "img-responsive inp7") %></li>
         <li><%= image_tag("inp.png", class: "img-responsive inp8") %></li>
         <%= link_to "Add as friend", free_path(@seat), remote: true, style: "display: none", id: "free_seat"%>
+        <%= link_to "Flash", flash_msp_path(@seat), remote: true, style: "display: none", id: "flash_msp_seat"%>
+        <%= link_to "Flash", flash_msp2_path(@seat), remote: true, style: "display: none", id: "flash_msp2_seat"%>
       </ul>
     </div>
   </div>

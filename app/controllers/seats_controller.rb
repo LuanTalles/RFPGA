@@ -1,5 +1,6 @@
 class SeatsController < ApplicationController
   before_action :set_seat, only: [:show, :edit, :update, :destroy, :use, :free]
+  before_action :msp, only: [:use, :flash_msp, :flash_msp2]
 
   # GET /seats
   # GET /seats.json
@@ -19,6 +20,9 @@ class SeatsController < ApplicationController
     @seat.last_user_sat_id = current_user.id
     @seat.save
 
+    system "djtgcfg enum"
+    system "djtgcfg init -d Basys3"
+
   end
 
   # def free
@@ -32,6 +36,14 @@ class SeatsController < ApplicationController
       # @seat = Seat.find(params[:id])
       @seat.user_id = nil
       @seat.save
+  end
+
+  def flash_msp
+    @msp.flush_a
+  end
+
+  def flash_msp2
+    @msp.flush_s 
   end
 
   # GET /seats/new
@@ -83,6 +95,11 @@ class SeatsController < ApplicationController
       format.html { redirect_to seats_url, notice: 'Seat was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def msp
+    @msp = MSPService.new
+    @sp = @msp.sep
   end
 
   private

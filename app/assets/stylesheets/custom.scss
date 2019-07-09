@@ -82,7 +82,7 @@ nav i.material-icons {
 
 .side-nav-profile-image {height: 110px;}
 
-#profile-icon-img {background-color: #ee6e73; border-radius: 50%; height: auto; width: auto; font-size: 110px; line-height: normal; padding: 0 0}
+#profile-icon-img {background-color: #ee6e73; border-radius: 50%; height: 115px; width: auto; font-size: 115px; line-height: normal; padding: 0 0}
 
 #profile-img {border-radius: 50%; height: 110px; width: 110px; font-size: 110px; line-height: normal; padding: 0 0}
 
@@ -397,7 +397,8 @@ i.material-icons.show_pass {
 #div_switch  > img
 {
   position: relative;
-  // width: -webkit-calc(100%/9);
+  //width: -webkit-calc(100%/9);
+  width: 11%;
 }
 
 #path1375, #path1376, #path1377, #path1378

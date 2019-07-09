@@ -25,6 +25,11 @@ class FpgasController < ApplicationController
 
   def upload_bitstream
     @fpga.update(fpga_params)
+
+    # system "sqlite3 my.db \"SELECT writefile('ORgate.bit', #{@fpga.bitstream}) FROM MyTable WHERE id = 1\""
+
+    system "djtgcfg prog -d Basys3 -i 0 -f #{@fpga.bitstream.filename}"
+
   end
 
   # POST /fpgas
